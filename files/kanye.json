@@ -1,0 +1,21 @@
+{
+  "albums" : [
+    {"name" : "Yeezus", "img" :  "https://i.ebayimg.com/images/g/WQkAAOSwqTBiulfC/s-l225.jpg"},
+    {"name" : "MBDTF", "img" :  "https://static.qobuz.com/images/covers/47/74/0060252747447_600.jpg"},
+    {"name" : "Donda", "img" :  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1024px-Black_from_a_camera.jpg"}
+  ],
+  "songs" : [
+    {"name" : "Dark Fantasy", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=UTH1VNHLjng"},
+    {"name" : "Gorgeous", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=miJAfs7jhak"},
+    {"name" : "POWER", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=chPDTUjnWgA"},
+    {"name" : "All Of The Lights", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=w2Yh9sxfTd8"},
+    {"name" : "Monster", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=pS6HRKZQLFA"},
+    {"name" : "So Appalled", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=0o9HzQ3zAcE"},
+    {"name" : "Devil In A New Dress", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=yW5DjagYfok"},
+    {"name" : "Runaway", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=EMnQwBTJnMM"},
+    {"name" : "Hell Of A Life", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=tJKNcI6jC6A"},
+    {"name" : "Blame Game", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=6mp72xUirfs"},
+    {"name" : "Lost In The World", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=1Dzh0XkuNPg"},
+    {"name" : "Who Will Survive In America", "artist" : "Kanye West", "album" : "MBDTF", "src" : "https://www.youtube.com/watch?v=UB6sXiZ1ldw"}
+  ]
+}
