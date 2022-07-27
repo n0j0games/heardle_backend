@@ -15,15 +15,17 @@ let json = {
 
 const pantryid = "0911ba7f-da52-4ccf-9aee-8ee0b3e48cd3";
 let currentArtist = null;
+let onlyRefresh = false;
 
 if (args.length === 2 && args[1] === '--reset') {
     post(args[0]);
+} else if (args.length === 2 && args[1] === '--refresh') {
+    onlyRefresh = true;
+    setNextSong(args[0]);
+} else if (args.length === 0) {
+    console.log("artist key as argument required");
 } else {
-    if (args.length === 0) {
-        console.log("artist key as argument required");
-    } else {
-        setNextSong(args[0]);
-    }
+    setNextSong(args[0]);
 }
 
 function setNextSong(artist) {
@@ -63,15 +65,21 @@ function handleGet(jsondata) {
         const allsongs = JSON.parse(data).songs;
 
         console.log(jsondata);
-        if (jsondata.current !== null) {
-            if (jsondata.previous === undefined) {
-                jsondata.previous = [jsondata.current];
-            } else {
-                jsondata.previous.push(jsondata.current);
+        let current = jsondata.current;
+        if (!onlyRefresh) {
+            console.log("Updating to next song");
+            if (jsondata.current !== null) {
+                if (jsondata.previous === undefined) {
+                    jsondata.previous = [jsondata.current];
+                } else {
+                    jsondata.previous.push(jsondata.current);
+                }
             }
+            current = getRandomNum(jsondata.previous, allsongs.length);
+            jsondata.current = current;
+        } else {
+            console.log("Refreshing url only");
         }
-        const current = getRandomNum(jsondata.previous, allsongs.length);
-        jsondata.current = current;
         const currentSong = allsongs[current];
         jsondata.title = currentSong.name;
         jsondata.artist = currentSong.artist;
