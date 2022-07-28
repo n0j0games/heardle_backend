@@ -1,11 +1,6 @@
 const youtubedl = require('youtube-dl-exec');
 const fs = require("fs");
 const axios = require('axios');
-const schedule = require('node-schedule');
-
-/*
-Main Part
- */
 
 const args = process.argv.slice(2);
 
@@ -22,17 +17,15 @@ const pantryid = "0911ba7f-da52-4ccf-9aee-8ee0b3e48cd3";
 let currentArtist = null;
 let onlyRefresh = false;
 
-function run(args) {
-    if (args.length === 2 && args[1] === '--reset') {
-        post(args[0]);
-    } else if (args.length === 2 && args[1] === '--refresh') {
-        onlyRefresh = true;
-        setNextSong(args[0]);
-    } else if (args.length === 0) {
-        console.log("artist key as argument required");
-    } else {
-        setNextSong(args[0]);
-    }
+if (args.length === 2 && args[1] === '--reset') {
+    post(args[0]);
+} else if (args.length === 2 && args[1] === '--refresh') {
+    onlyRefresh = true;
+    setNextSong(args[0]);
+} else if (args.length === 0) {
+    console.log("artist key as argument required");
+} else {
+    setNextSong(args[0]);
 }
 
 function setNextSong(artist) {
@@ -141,40 +134,3 @@ function handlePost() {
         console.error(`> Error ${this.status}: ${this.responseText}`);
     }
 }
-
-/*
-    Scheduler
- */
-
-console.log("[INFO] Starting Scheduler");
-run(["kanye","--refresh"]);
-
-const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
-    console.log(`[INFO] Scheduler is active`);
-});
-
-const job = schedule.scheduleJob('0 * * * *', function(fireDate){
-    console.log(`[INFO][${fireDate}] Running scheduled refresh job`);
-    run(["kanye","--refresh"]);
-});
-
-const job2 = schedule.scheduleJob('* * 0 * *', function(fireDate){
-    console.log(`[INFO][${fireDate}] Running scheduled job`);
-    run(["kanye"]);
-});
-
-process.on('SIGINT', function () {
-    console.error("[ERROR] Shutdown Scheduled Processes");
-    schedule.gracefulShutdown()
-        .then(() => process.exit(0))
-});
-
-/* Starting webserver for heroku to run sucessfully */
-
-const http = require('http');
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write("Scheduler is active");
-    res.end();
-}).listen(process.env.PORT || 8080);
-console.log(`[INFO] Server running on Port ${process.env.PORT || 8080}`);
