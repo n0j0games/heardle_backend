@@ -168,4 +168,11 @@ process.on('SIGINT', function () {
         .then(() => process.exit(0))
 });
 
-process.stdin.resume();
+/* Webserver Test */
+
+const http = require('http');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write("Scheduler is active");
+    res.end();
+}).listen(8080);
