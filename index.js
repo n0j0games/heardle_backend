@@ -1,6 +1,11 @@
 const youtubedl = require('youtube-dl-exec');
 const fs = require("fs");
 const axios = require('axios');
+const schedule = require('node-schedule');
+
+/*
+Main Part
+ */
 
 const args = process.argv.slice(2);
 
@@ -17,15 +22,17 @@ const pantryid = "0911ba7f-da52-4ccf-9aee-8ee0b3e48cd3";
 let currentArtist = null;
 let onlyRefresh = false;
 
-if (args.length === 2 && args[1] === '--reset') {
-    post(args[0]);
-} else if (args.length === 2 && args[1] === '--refresh') {
-    onlyRefresh = true;
-    setNextSong(args[0]);
-} else if (args.length === 0) {
-    console.log("artist key as argument required");
-} else {
-    setNextSong(args[0]);
+function run(args) {
+    if (args.length === 2 && args[1] === '--reset') {
+        post(args[0]);
+    } else if (args.length === 2 && args[1] === '--refresh') {
+        onlyRefresh = true;
+        setNextSong(args[0]);
+    } else if (args.length === 0) {
+        console.log("artist key as argument required");
+    } else {
+        setNextSong(args[0]);
+    }
 }
 
 function setNextSong(artist) {
@@ -134,3 +141,27 @@ function handlePost() {
         console.error(`> Error ${this.status}: ${this.responseText}`);
     }
 }
+
+/*
+    Scheduler
+ */
+
+console.log("[INFO] Starting Scheduler");
+
+const job = schedule.scheduleJob('41 * * * *', function(fireDate){
+    console.log(`[INFO][${fireDate}] Running scheduled refresh job`);
+    run(["kanye","--refresh"]);
+});
+
+const job2 = schedule.scheduleJob('* * 0 * *', function(fireDate){
+    console.log(`[INFO][${fireDate}] Running scheduled job`);
+    run(["kanye"]);
+});
+
+process.on('SIGINT', function () {
+    console.error("[ERROR] Shutdown Scheduled Processes");
+    schedule.gracefulShutdown()
+        .then(() => process.exit(0))
+});
+
+process.stdin.resume();
