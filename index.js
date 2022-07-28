@@ -148,6 +148,10 @@ function handlePost() {
 
 console.log("[INFO] Starting Scheduler");
 
+const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
+    console.log(`[INFO] Scheduler is active`);
+});
+
 const job = schedule.scheduleJob('0 * * * *', function(fireDate){
     console.log(`[INFO][${fireDate}] Running scheduled refresh job`);
     run(["kanye","--refresh"]);
