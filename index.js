@@ -147,10 +147,15 @@ function handlePost() {
  */
 
 console.log("[INFO] Starting Scheduler");
-run(["kanye","--refresh"]);
+let refreshonce = false;
 
 const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
     console.log(`[INFO] Scheduler is active`);
+    if (!refreshonce) {
+        refreshonce = true;
+        console.log(`[INFO] Refreshing once`);
+        run(["kanye","--refresh"]);
+    }
 });
 
 const job = schedule.scheduleJob('0 * * * *', function(fireDate){
