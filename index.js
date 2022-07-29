@@ -104,13 +104,14 @@ function handleGet(jsondata) {
                 console.error("Error occurred while trying to remove file");
             }
         });
-        youtubedl("https://www.youtube.com/watch?v=DmWWqogr_r8", {
+
+        youtubedl(currentSong.src, {
             //getUrl : true,
             extractAudio : true,
             audioFormat : "mp3",
             geoBypass : true,
             geoBypassCountry : 'DE',
-            referer : "https://www.youtube.com/watch?v=DmWWqogr_r8",
+            referer : currentSong.src,
             output : "audiooutput.%(ext)s"
         }).then(output => collectOutputNew(output));
 
@@ -183,18 +184,17 @@ function handlePost() {
     }
 }
 
+run(["kanye","--refresh"]);
+
 /*
     Scheduler
  */
 
-console.log("[INFO] Starting Scheduler");
-let refreshonce = false;
-
-run(["kanye","--refresh"]);
-
+//console.log("[INFO] Starting Scheduler");
+/*
 const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
     console.log(`[INFO] Scheduler is active`);
-});
+});*/
 
 /*
 const job = schedule.scheduleJob('0 * * * *', function(fireDate){
@@ -202,6 +202,7 @@ const job = schedule.scheduleJob('0 * * * *', function(fireDate){
     run(["kanye","--refresh"]);
 });*/
 
+/*
 const job2 = schedule.scheduleJob('* * 0 * *', function(fireDate){
     console.log(`[INFO][${fireDate}] Running scheduled job`);
     run(["kanye"]);
@@ -212,11 +213,14 @@ process.on('SIGINT', function () {
     schedule.gracefulShutdown()
         .then(() => process.exit(0))
 });
+ */
 
 /* Starting webserver for heroku to run sucessfully */
 
 /*
+let serverres = null;
 http.createServer(function (req, res) {
+    serverres = res;
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write("Scheduler is active");
     res.end();
