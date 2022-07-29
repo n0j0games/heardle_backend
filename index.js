@@ -95,7 +95,10 @@ function handleGet(jsondata) {
         json = jsondata;
 
         youtubedl(currentSong.src, {
-            getUrl : true
+            getUrl : true,
+            geoBypass : true,
+            geoBypassCountry : 'DE',
+            referer : currentSong.src
         }).then(output => collectOutput(output))
     });
     /*if (this.status === 200) {
@@ -153,7 +156,7 @@ const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
     console.log(`[INFO] Scheduler is active`);
     if (!refreshonce) {
         refreshonce = true;
-        console.log(`[INFO] Refreshing once`);
+        console.log(`[INFO][${fireDate}] Refreshing once`);
         run(["kanye","--refresh"]);
     }
 });
