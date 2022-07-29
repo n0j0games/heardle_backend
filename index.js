@@ -2,6 +2,7 @@ const youtubedl = require('youtube-dl-exec');
 const fs = require("fs");
 const axios = require('axios');
 const schedule = require('node-schedule');
+const http = require('http');
 
 /*
 Main Part
@@ -101,7 +102,6 @@ function handleGet(jsondata) {
             } else if (err) {
                 // other errors, e.g. maybe we don't have enough permission
                 console.error("Error occurred while trying to remove file");
-                return;
             }
         });
         youtubedl("https://www.youtube.com/watch?v=DmWWqogr_r8", {
@@ -114,12 +114,13 @@ function handleGet(jsondata) {
             output : "audiooutput.%(ext)s"
         }).then(output => collectOutputNew(output));
 
-        /*youtubedl(currentSong.src, {
+        /*
+        youtubedl(currentSong.src, {
             getUrl : true,
             geoBypass : true,
             geoBypassCountry : 'DE',
             referer : currentSong.src
-        }).then(output => collectOutput(output))*/
+        }).then(output => collectOutputNew(output))*/
     });
     /*if (this.status === 200) {
 
@@ -132,8 +133,20 @@ function handleGet(jsondata) {
 }
 
 function collectOutputNew(output) {
-    json.ytdl_src = "https://yeardleapp.herokuapp.com/audiooutput.mp3"
+    json.ytdl_src = "https://yeardleapp.herokuapp.com"
     post(currentArtist);
+    startServer();
+}
+
+function startServer() {
+    http.createServer(function(req, res) {
+        res.writeHead(200, {'Content-Type': 'audio/mp3'});
+        const rstream = fs.createReadStream('audiooutput.mp3');
+        rstream.pipe(res);
+
+
+    }).listen(process.env.PORT || 8080);
+    console.log(`[INFO] Server running on Port ${process.env.PORT || 8080}`);
 }
 
 function collectOutput(output) {
@@ -177,13 +190,10 @@ function handlePost() {
 console.log("[INFO] Starting Scheduler");
 let refreshonce = false;
 
+run(["kanye","--refresh"]);
+
 const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
     console.log(`[INFO] Scheduler is active`);
-    if (!refreshonce) {
-        refreshonce = true;
-        console.log(`[INFO][${fireDate}] Refreshing once`);
-        run(["kanye","--refresh"]);
-    }
 });
 
 /*
@@ -205,10 +215,11 @@ process.on('SIGINT', function () {
 
 /* Starting webserver for heroku to run sucessfully */
 
-const http = require('http');
+/*
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write("Scheduler is active");
     res.end();
 }).listen(process.env.PORT || 8080);
 console.log(`[INFO] Server running on Port ${process.env.PORT || 8080}`);
+*/
