@@ -190,7 +190,7 @@ run(["kanye","--refresh"]);
     Scheduler
  */
 
-//console.log("[INFO] Starting Scheduler");
+console.log("[INFO] Starting Scheduler");
 /*
 const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
     console.log(`[INFO] Scheduler is active`);
@@ -202,12 +202,12 @@ const job = schedule.scheduleJob('0 * * * *', function(fireDate){
     run(["kanye","--refresh"]);
 });*/
 
-/*
-const job2 = schedule.scheduleJob('* * 0 * *', function(fireDate){
+const job = schedule.scheduleJob('* */5 * * *', function(fireDate){
     console.log(`[INFO][${fireDate}] Running scheduled job`);
     run(["kanye"]);
 });
 
+/*
 process.on('SIGINT', function () {
     console.error("[ERROR] Shutdown Scheduled Processes");
     schedule.gracefulShutdown()
