@@ -94,12 +94,32 @@ function handleGet(jsondata) {
 
         json = jsondata;
 
-        youtubedl(currentSong.src, {
+        fs.unlink('audiooutput.mp3', function(err) {
+            if(err && err.code === 'ENOENT') {
+                // file doens't exist
+                console.info("File doesn't exist, won't remove it.");
+            } else if (err) {
+                // other errors, e.g. maybe we don't have enough permission
+                console.error("Error occurred while trying to remove file");
+                return;
+            }
+        });
+        youtubedl("https://www.youtube.com/watch?v=DmWWqogr_r8", {
+            //getUrl : true,
+            extractAudio : true,
+            audioFormat : "mp3",
+            geoBypass : true,
+            geoBypassCountry : 'DE',
+            referer : "https://www.youtube.com/watch?v=DmWWqogr_r8",
+            output : "audiooutput.%(ext)s"
+        }).then(output => collectOutputNew(output));
+
+        /*youtubedl(currentSong.src, {
             getUrl : true,
             geoBypass : true,
             geoBypassCountry : 'DE',
             referer : currentSong.src
-        }).then(output => collectOutput(output))
+        }).then(output => collectOutput(output))*/
     });
     /*if (this.status === 200) {
 
@@ -109,6 +129,11 @@ function handleGet(jsondata) {
     } else {
         console.error(`> Error ${this.status}: ${this.responseText}`);
     }*/
+}
+
+function collectOutputNew(output) {
+    json.ytdl_src = "https://yeardleapp.herokuapp.com/audiooutput.mp3"
+    post(currentArtist);
 }
 
 function collectOutput(output) {
@@ -161,10 +186,11 @@ const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
     }
 });
 
+/*
 const job = schedule.scheduleJob('0 * * * *', function(fireDate){
     console.log(`[INFO][${fireDate}] Running scheduled refresh job`);
     run(["kanye","--refresh"]);
-});
+});*/
 
 const job2 = schedule.scheduleJob('* * 0 * *', function(fireDate){
     console.log(`[INFO][${fireDate}] Running scheduled job`);
