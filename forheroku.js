@@ -95,13 +95,59 @@ function handleGet(jsondata) {
 
         json = jsondata;
 
+        fs.unlink('audiooutput.mp3', function(err) {
+            if(err && err.code === 'ENOENT') {
+                // file doens't exist
+                console.info("File doesn't exist, won't remove it.");
+            } else if (err) {
+                // other errors, e.g. maybe we don't have enough permission
+                console.error("Error occurred while trying to remove file");
+            }
+        });
+
+        youtubedl(currentSong.src, {
+            //getUrl : true,
+            extractAudio : true,
+            audioFormat : "mp3",
+            geoBypass : true,
+            geoBypassCountry : 'DE',
+            referer : currentSong.src,
+            output : "audiooutput.%(ext)s"
+        }).then(output => collectOutputNew(output));
+
+        /*
         youtubedl(currentSong.src, {
             getUrl : true,
             geoBypass : true,
             geoBypassCountry : 'DE',
             referer : currentSong.src
-        }).then(output => collectOutput(output))
+        }).then(output => collectOutputNew(output))*/
     });
+    /*if (this.status === 200) {
+
+    } else if (this.status === 400) {
+        console.log(`> Basket ${currentArtist} not found, creating new one`);
+        post(currentArtist);
+    } else {
+        console.error(`> Error ${this.status}: ${this.responseText}`);
+    }*/
+}
+
+function collectOutputNew(output) {
+    json.ytdl_src = "https://yeardleapp.herokuapp.com"
+    post(currentArtist);
+    startServer();
+}
+
+function startServer() {
+    http.createServer(function(req, res) {
+        res.writeHead(200, {'Content-Type': 'audio/mp3'});
+        const rstream = fs.createReadStream('audiooutput.mp3');
+        rstream.pipe(res);
+
+
+    }).listen(process.env.PORT || 8080);
+    console.log(`[INFO] Server running on Port ${process.env.PORT || 8080}`);
 }
 
 function collectOutput(output) {
@@ -130,39 +176,54 @@ function post(artist) {
         });
 }
 
+function handlePost() {
+    if (this.status === 200) {
+        console.log(`Success 200: ${this.response}`);
+    } else {
+        console.error(`> Error ${this.status}: ${this.responseText}`);
+    }
+}
+
+run(["kanye","--refresh"]);
+
 /*
     Scheduler
  */
 
 console.log("[INFO] Starting Scheduler");
-
+/*
 const logger = schedule.scheduleJob('0 * * * * *', function(fireDate){
     console.log(`[INFO] Scheduler is active`);
-});
+});*/
 
+/*
 const job = schedule.scheduleJob('0 * * * *', function(fireDate){
     console.log(`[INFO][${fireDate}] Running scheduled refresh job`);
     run(["kanye","--refresh"]);
-});
+});*/
 
-const job2 = schedule.scheduleJob('* * 0 * *', function(fireDate){
+const job = schedule.scheduleJob('* */5 * * *', function(fireDate){
     console.log(`[INFO][${fireDate}] Running scheduled job`);
     run(["kanye"]);
 });
 
+/*
 process.on('SIGINT', function () {
     console.error("[ERROR] Shutdown Scheduled Processes");
     schedule.gracefulShutdown()
         .then(() => process.exit(0))
 });
+ */
 
 /* Starting webserver for heroku to run sucessfully */
 
+/*
+let serverres = null;
 http.createServer(function (req, res) {
+    serverres = res;
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write("Scheduler is active");
     res.end();
 }).listen(process.env.PORT || 8080);
 console.log(`[INFO] Server running on Port ${process.env.PORT || 8080}`);
-
-run(["kanye","--refresh"]);
+*/

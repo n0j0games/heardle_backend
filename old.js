@@ -88,17 +88,12 @@ function handleGet(jsondata) {
         json = jsondata;
 
         youtubedl(currentSong.src, {
-            getUrl : true
+            getUrl : true,
+            geoBypass : true,
+            geoBypassCountry : 'DE',
+            referer : currentSong.src
         }).then(output => collectOutput(output))
     });
-    /*if (this.status === 200) {
-
-    } else if (this.status === 400) {
-        console.log(`> Basket ${currentArtist} not found, creating new one`);
-        post(currentArtist);
-    } else {
-        console.error(`> Error ${this.status}: ${this.responseText}`);
-    }*/
 }
 
 function collectOutput(output) {
@@ -125,12 +120,4 @@ function post(artist) {
         .catch(function (error) {
             console.log(error);
         });
-}
-
-function handlePost() {
-    if (this.status === 200) {
-        console.log(`Success 200: ${this.response}`);
-    } else {
-        console.error(`> Error ${this.status}: ${this.responseText}`);
-    }
 }
