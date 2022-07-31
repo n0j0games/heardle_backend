@@ -1,24 +1,8 @@
 {
   "songs" : [
-    {"name" : "Extravaganza", "artist" : "Jaime Foxx", "album" : "", "src" : "https://www.youtube.com/watch?v=InS2wbk9COk"},
-    {"name" : "Marvin & Chardonnay", "artist" : "Big Sean", "album" : "", "src" : "https://www.youtube.com/watch?v=A1anxnA7Zwc"},
-    {"name" : "E.T.", "artist" : "Katy Perry", "album" : "", "src" : "https://www.youtube.com/watch?v=t5Sd5c4o9UM"},
-    {"name" : "Track 6", "artist" : "Ty Dolla Sign", "album" : "", "src" : "https://www.youtube.com/watch?v=MODX7DWeN_c"},
-    {"name" : "Ego Death", "artist" : "", "album" : "Ty Dolla Sign", "src" : "https://www.youtube.com/watch?v=ik4USIChrkY"},
-    {"name" : "What Would Meek Do?", "artist" : "Pusha T", "album" : "", "src" : "https://www.youtube.com/watch?v=hGhC473BCIM"},
-    {"name" : "MAMA", "artist" : "6ix9ine", "album" : "", "src" : "https://www.youtube.com/watch?v=wPhLt1zlCik"},
-    {"name" : "Glow", "artist" : "Drake", "album" : "", "src" : "https://www.youtube.com/watch?v=LFIP0Pk2hwA"},
-    {"name" : "THat Part", "artist" : "ScHoolboy Q", "album" : "", "src" : "https://www.youtube.com/watch?v=uQ_DHRI-Xp0"},
-    {"name" : "M.P.A.", "artist" : "Pusha T", "album" : "", "src" : "https://www.youtube.com/watch?v=R0NpahenvAg"},
-    {"name" : "All Your Fault", "artist" : "Big Sean", "album" : "", "src" : "https://www.youtube.com/watch?v=9s0r1NSLdqQ"},
-    {"name" : "Jukebox Joints", "artist" : "ASAP Rocky", "album" : "", "src" : "https://www.youtube.com/watch?v=jn07FnLMiQg"},
-    {"name" : "Blessings", "artist" : "Big Sean", "album" : "", "src" : "https://www.youtube.com/watch?v=M6t47RI4bns"},
-    {"name" : "Drunk in Love", "artist" : "Beyonce", "album" : "", "src" : "https://www.youtube.com/watch?v=BH17mbL2QMA"},
-    {"name" : "Erase Me", "artist" : "Kid Cudi", "album" : "", "src" : "https://www.youtube.com/watch?v=2JHohGMYT5Y"},
-    {"name" : "Kinda Like a Big Deal", "artist" : "Clipse", "album" : "", "src" : "https://www.youtube.com/watch?v=3LD98c-9fGY"},
-    {"name" : "Run This Town", "artist" : "JAY-Z", "album" : "", "src" : "https://www.youtube.com/watch?v=EeE7CfNs7Js"},
-    {"name" : "Forever", "artist" : "Drake", "album" : "", "src" : "https://www.youtube.com/watch?v=x7liVI9ozI4"},
-    {"name" : "Make Her Say", "artist" : "Kid Cudi", "album" : "", "src" : "https://www.youtube.com/watch?v=SiF4cJSE5As"},
-    {"name" : "Number One", "artist" : "Pharell Williams", "album" : "", "src" : "https://www.youtube.com/watch?v=5_bde8Z8QwY"}
+    {"name" : "Chakras (Yandhi)", "artist" : "Kanye West", "album" : "Yandhi", "src" : "https://www.youtube.com/watch?v=Rlf8KP4ZikM"},
+    {"name" : "Alien (Yandhi)", "artist" : "Kanye West", "album" : "Yandhi", "src" : "https://www.youtube.com/watch?v=2dYmgAty0Io"},
+    {"name" : "City In The Sky (Yandhi)", "artist" : "Kanye West", "album" : "Yandhi", "src" : "https://www.youtube.com/watch?v=0OVRa9Qh7Vc"},
+    {"name" : "New Body (Yandhi)", "artist" : "Kanye West", "album" : "Yandhi", "src" : "https://www.youtube.com/watch?v=Ci8YaibOp_o"}
   ]
 }
