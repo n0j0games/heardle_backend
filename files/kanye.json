@@ -19,7 +19,8 @@
     {"name" : "JIK", "img" :  "https://m.media-amazon.com/images/I/61Ptk7IYKDL._SL1400_.jpg"},
     {"name" : "Donda", "img" :  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1024px-Black_from_a_camera.jpg"},
     {"name" : "Yandhi" , "img" : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Yandhi_Cover_Art_%28Free_License%29.jpg/1200px-Yandhi_Cover_Art_%28Free_License%29.jpg"},
-    {"name" : "Donda2", "img" : "https://i1.sndcdn.com/artworks-WeYJ3cZHEC7gUuHQ-My6aMg-t500x500.jpg"}
+    {"name" : "Donda2", "img" : "https://i1.sndcdn.com/artworks-WeYJ3cZHEC7gUuHQ-My6aMg-t500x500.jpg"},
+    {"name" : "TLOP", "img" : "https://upload.wikimedia.org/wikipedia/en/4/4d/The_life_of_pablo_alternate.jpg"}
   ],
   "songs" : [
     {"name" : "True Love", "artist" : "Kanye West", "album" : "https://m.media-amazon.com/images/I/41C0D3BwfeL._UXNaN_FMjpg_QL85_.jpg", "src" : "https://www.youtube.com/watch?v=k7H2C5L8X7I"},
@@ -250,6 +251,27 @@
     {"name" : "Illest Mother Fucker Alive", "artist" : "JAY-Z, Kanye West", "album" : "WTT", "src" : "https://www.youtube.com/watch?v=L-IKSh-FkSk"},
     {"name" : "H A M", "artist" : "JAY-Z, Kanye West", "album" : "WTT", "src" : "https://www.youtube.com/watch?v=ReNj2rb1zlI"},
     {"name" : "Primetime", "artist" : "JAY-Z, Kanye West", "album" : "WTT", "src" : "https://www.youtube.com/watch?v=Tad-ky3jLZ0"},
-    {"name" : "The Joy", "artist" : "JAY-Z, Kanye West", "album" : "WTT", "src" : "https://www.youtube.com/watch?v=0hLqKJ40yg8"}
+    {"name" : "The Joy", "artist" : "JAY-Z, Kanye West", "album" : "WTT", "src" : "https://www.youtube.com/watch?v=0hLqKJ40yg8"},
+    
+    {"name" : "Ultralight Beam", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=6oHdAA3AqnE"},
+    {"name" : "Father Stretch My Hands Pt. 1", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=wuO4_P_8p-Q"},
+    {"name" : "Pt. 2", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=xp8z7pconzw"},
+    {"name" : "Famous", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=Lq2TmRzg19k"},
+    {"name" : "Feedback", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=Q-fluWQ6zW8"},
+    {"name" : "Low Lights", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=wj0C2oet2r0"},
+    {"name" : "Highlights", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=AXz78NYL4r4"},
+    {"name" : "Freestyle 4", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=yt3rfHIijZQ"},
+    {"name" : "Waves", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=ML8Yq1Rd6I0"},
+    {"name" : "FML", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=SHfB5HBFeTc"},
+    {"name" : "Real Friends", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=fWD9GF-Ogf4"},
+    {"name" : "Wolves", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=lDLEsnXauwU"},
+    {"name" : "Franks Track", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=6oaaKNXuUv4"},
+    {"name" : "Silver Surfer Intermission", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=SeeP7YhFy0Q"},
+    {"name" : "30 Hours", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=OH3bNgA1rkE"},
+    {"name" : "No More Parties in LA", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=NnMuFqsmYSE"},
+    {"name" : "Facts (Charlie Heat Version)", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=yiwDWKg9AMA"},
+    {"name" : "Fade", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=qOZ0hPp3OZU"},
+    {"name" : "Saint Pablo", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=w9rzz4pDFwA"},
+    {"name" : "I Love Kanye", "artist" : "Kanye West", "album" : "TLOP", "src" : "https://www.youtube.com/watch?v=ch8g-sJb6ow"}
   ]
 }
